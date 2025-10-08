@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="form-card">
+    <h2>🔠 Uppercase Converter</h2>
+
+    <form action="/works" method="post">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" name="inputString" placeholder="Type text here...">
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if result %}
+    <p>Converted string: {{ result }}</p>
+    {% endif %}
+
+    <a href="/" class="btn" style="margin-top: 25px;">⬅ Back to Home</a>
+</section>
+{% endblock %}

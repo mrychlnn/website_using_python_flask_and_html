@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="profile-section">
+    <div class="profile-card">
+        <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Profile Photo" class="profile-img">
+        <h2>Hello, I'm <span class="highlight">Mary Chloe Anne Luna</span> 👋</h2>
+        <p>I’m a passionate Computer Engineering student at PUP Sta.Mesa interested in software development, computer networks, hardware and hands-on projects.</p>
+        <p>My current focus is on learning Python, Flask, and system design to build functional and user-friendly web applications.</p>
+
+        <div class="button-group">
+            <a href="/contact" class="btn">Get in Touch</a>
+            <a href="/works" class="btn">View My Works</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

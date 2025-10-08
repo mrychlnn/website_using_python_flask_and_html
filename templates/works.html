@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="works-section">
+    <h2 class="highlight">🚀 My Works</h2>
+    <p>Here are some of my recent projects or works across coding and design.</p>
+
+   <div class="works-grid">
+        <div class="work-card" onclick="openModal('Flask Web App')">
+            <h3>🌐 Flask Web App</h3>
+            <p>A minimalist galaxy-themed website built with Python Flask and HTML/CSS.</p>
+        </div>
+        <div class="work-card" onclick="openModal('My Webpage')">
+            <h3>💾 My Webpage</h3>
+            <p>A simple winter-themed website built using Python StreamLit and LottieFiles.</p>
+        </div>
+        <div class="work-card" onclick="openModal('Python Codes')">
+            <h3>🤖 Python Codes</h3>
+            <p>A random basic Python-based programs.</p>
+        </div>
+    </div>
+
+    <a href="/profile" class="btn" style="margin-top: 30px;">Back to Profile</a>
+</section>
+
+<div id="workModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle">My Work</h3>
+        <p>Interested to see my works? Visit my GitHub account:</p>
+        <a href="https://github.com/mrychlnn" target="_blank" class="btn">Visit GitHub</a>
+    </div>
+</div>
+
+<script>
+function openModal(title) {
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("workModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("workModal").style.display = "none";
+}
+
+// Close modal when clicking outside the box
+window.onclick = function(event) {
+    const modal = document.getElementById("workModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+{% endblock %}
