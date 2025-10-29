@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="form-card">
+    <h2>🔢 Infix to Postfix Converter</h2>
+    <p>Enter an infix expression (like <code>A + B * C</code>) to convert it into postfix form using the Shunting Yard Algorithm.</p>
+
+    <form action="/infix_postfix" method="post">
+        <label for="infix">Infix Expression:</label>
+        <input type="text" id="infix" name="infix" placeholder="Ex: A+B*C or (A+B)*C" required>
+        <button type="submit">Convert to Postfix</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">
+        <p>✅ Postfix Expression:</p>
+        <h3>{{ result }}</h3>
+    </div>
+    {% endif %}
+
+    <a href="/" class="btn" style="margin-top: 25px;">⬅ Back to Home</a>
+</section>
+{% endblock %}

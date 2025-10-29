@@ -3,6 +3,31 @@ import math
 
 app = Flask(__name__)
 
+def infix_to_postfix(expression):
+    precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+    stack = []
+    output = []
+
+    for char in expression:
+        if char.isalnum():  
+            output.append(char)
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop()
+        else:
+            while (stack and stack[-1] != '(' and
+                   precedence.get(char, 0) <= precedence.get(stack[-1], 0)):
+                output.append(stack.pop())
+            stack.append(char)
+
+    while stack:
+        output.append(stack.pop())
+
+    return ' '.join(output)
+
 @app.route('/')
 def home():
     return render_template('index.html', title="Home")
@@ -39,6 +64,14 @@ def profile():
 @app.route('/works')
 def works():
     return render_template('works.html', title='My Works')
+
+@app.route("/infix_postfix", methods=["GET", "POST"])
+def infix_postfix():
+    result = None
+    if request.method == "POST":
+        infix_expression = request.form["infix"]
+        result = infix_to_postfix(infix_expression)
+    return render_template("infix_postfix.html", result=result)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
